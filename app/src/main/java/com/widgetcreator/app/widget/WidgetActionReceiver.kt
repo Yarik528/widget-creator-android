@@ -4,7 +4,7 @@ import android.content.BroadcastReceiver
 import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
-import androidx.core.appwidget.AppWidgetManager
+import android.appwidget.AppWidgetManager
 import com.widgetcreator.app.util.WidgetCreatorApp
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

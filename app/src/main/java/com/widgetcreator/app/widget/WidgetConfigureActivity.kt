@@ -51,11 +51,11 @@ class WidgetConfigureActivity : ComponentActivity() {
         }
 
         val dao = WidgetCreatorApp.from(this).db.widgetDao()
-        val templates by dao.observeTemplates().collectAsState(initial = emptyList())
 
         setContent {
             WidgetCreatorTheme {
                 Surface(modifier = Modifier.fillMaxSize()) {
+                    val templates by dao.observeTemplates().collectAsState(initial = emptyList())
                     ConfigureScreen(templates = templates, onPick = ::onTemplatePicked)
                 }
             }

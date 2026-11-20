@@ -2,6 +2,7 @@ package com.widgetcreator.app.widget
 
 import android.content.Context
 import android.graphics.Color
+import android.graphics.Typeface
 import android.widget.RemoteViews
 import com.widgetcreator.app.R
 import com.widgetcreator.app.data.WidgetInstance
@@ -58,10 +59,9 @@ object WidgetRenderer {
 
         views.setTextViewText(R.id.widget_title, title)
         views.setTextColor(R.id.widget_title, template.textColor)
-        views.setInt(
-            R.id.widget_title, "setTypeface",
-            android.graphics.Typeface.DEFAULT_BOLD.takeIf { template.boldText } ?: android.graphics.Typeface.DEFAULT
-        )
+        // RemoteViews.setTypface не поддерживается напрямую: задаём стиль через TextPaint-совместимый int (Typeface.BOLD / NORMAL)
+        val style = if (template.boldText) Typeface.BOLD else Typeface.NORMAL
+        views.setInt(R.id.widget_title, "setTextStyle", style)
 
         if (subtitle != null) {
             views.setViewVisibility(R.id.widget_subtitle, android.view.View.VISIBLE)
