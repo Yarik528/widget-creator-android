@@ -33,14 +33,54 @@ app/src/main/java/com/widgetcreator/app/
 
 Требования: JDK 17, Android SDK 34.
 
+### Настройка Android SDK (обязательно)
+
+Gradle должен знать, где установлен Android SDK. Выберите один из способов:
+
+**Вариант 1 — файл local.properties (рекомендуется)**
+
+Создайте в корне проекта файл `local.properties` (рядом с `build.gradle.kts`)
+и укажите путь к SDK. Готовый шаблон лежит в `local.properties.example`:
+
 ```
-./gradlew assembleDebug
-./gradlew installDebug   # или откройте проект в Android Studio
+sdk.dir=C\:\\Users\\Yarosib\\AppData\\Local\\Android\\Sdk
 ```
 
-Примечание: в репозиторий не включены бинарные файлы gradle wrapper
-(`gradle-wrapper.jar`, `gradlew`). Сгенерируйте их командой
-`gradle wrapper --gradle-version 8.7` либо используйте Gradle из Android Studio.
+Как найти путь к SDK:
+- Windows: обычно `C:\Users\<имя>\AppData\Local\Android\Sdk`
+- Linux: `/home/<имя>/Android/Sdk`
+- macOS: `/Users/<имя>/Library/Android/sdk`
+- Или посмотрите в Android Studio: File -> Settings -> Languages & Frameworks -> Android SDK (поле Android SDK Location)
+
+Экранирование для Windows обязательно: двоетания записываются как `C\\:`, слеги как `\\`.
+
+**Вариант 2 — переменная окружения ANDROID_HOME / ANDROID_SDK_ROOT**
+
+Windows (cmd):
+```
+setx ANDROID_HOME "C:\Users\Yarosib\AppData\Local\Android\Sdk"
+```
+после чего перезапустить терминал.
+
+Linux/macOS:
+```
+export ANDROID_HOME=$HOME/Android/Sdk
+```
+
+Также убедитесь, что через SDK Manager установлены пакеты **Platform SDK 34** и **Build-Tools**.
+
+### Компиляция
+
+```
+./gradlew assembleDebug        # Linux/macOS
+gradlew.bat assembleDebug      # Windows
+./gradlew installDebug         # установка на подключённое устройство
+```
+
+APK появится в `app/build/outputs/apk/debug/app-debug.apk`.
+
+Примечание: бинарные файлы gradle wrapper (`gradle-wrapper.jar`, `gradlew`) включены в репозиторий.
+Если их нет, сгенерируйте командой `gradle wrapper --gradle-version 8.7` либо используйте Gradle из Android Studio.
 
 ## Использование
 

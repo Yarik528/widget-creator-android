@@ -1,0 +1,12 @@
+## Пример файла local.properties для Windows
+## Скопируйте этот файл в local.properties и укажите путь к вашему Android SDK.
+## Путь можно найти в Android Studio: File -> Settings -> Languages & Frameworks -> Android SDK (Android SDK Location)
+
+# Windows (пример):
+sdk.dir=C\:\\Users\\Yarosib\\AppData\\Local\\Android\\Sdk
+
+# Linux (пример):
+# sdk.dir=/home/user/Android/Sdk
+
+# macOS (пример):
+# sdk.dir=/Users/user/Library/Android/sdk
